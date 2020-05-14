@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet 3 - JavaScript</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+
+  <link rel="stylesheet"
+    href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+  <script src="https://kit.fontawesome.com/d91cac8640.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="style.css">
+
+
+  
+
+</head>
+
+<body>
+
+  <!-- Header (navbar)-->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+
+      <a class="navbar-brand" href="#"><img src="image/logo.png" alt="Logo du site" id="main_logo"></a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+        <div class="navbar-nav">
+
+          <a class="nav-item nav-link active" href="#">Accueil <span class="sr-only">(current)</span></a>
+
+          <a class="nav-item nav-link" href="#carrousel">Tutoriel</a>
+
+          <a class="nav-item nav-link" href="#leaflet_map">Carte</a>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- Header (navbar) end -->
+
+  <!-- Slider -->
+
+  <section id="carrousel">
+    <div class="slider_parent">
+
+      <img src="image/slide_1.png" alt="Tuto reservation 1" id="slider_img" class="test">
+
+      <div id="legend_parent">
+        
+        <p id="legend">1 : Rendez-vous dans la section "Réservation" puis cliquez sur l'une des icones</p>
+
+      </div>
+
+
+      <div id="slider_content">
+
+        <i class="fas fa-chevron-circle-left chevrons" id="previous"></i>
+        <i class="fas fa-chevron-circle-right chevrons" id="next"></i>
+
+      </div>
+    </div>
+
+    <div id="slider_button">
+
+        <div id="circle_btn">
+          <button class="slider-toggle"><i class="fa fa-play" aria-hidden="true"></i></button>
+
+        </div>
+
+  </div>
+  </section>
+  <!-- Slider end -->
+
+  <section id="separation">
+    <h2>Réservation</h2>
+    <p>Suivez les différentes étapes ci-dessus pour reserver votre vélo.</p>
+  </section>
+
+  <!-- Map -->
+  <section id="leaflet_map">
+    <div id="map"> </div>
+
+    <div id="items_form">
+      <div id="infos_form">
+
+        <p id="logo_form_p">
+          <img src="image/logo.png" alt="Logo du site" id="logo_form">
+        </p>
+
+        <p id="statut_station">
+
+        </p>
+
+
+        <p id="bikes_address">
+          <!-- Adresse des vélos -->
+        </p>
+        
+        <p id="places_bikes">
+          <!-- Nombres de places -->Test </p>
+
+        <p id="bikes_available">
+          <!-- Vélos disponnibles -->Test </p>
+
+      </div>
+
+      <div id="input_form">
+
+        <form id="form">
+
+          <p>
+            <label>Prénom :</label>
+            <input type="text" class="id_form" name="first_name" id="first_name" pattern="^[A-Za-z]+$" maxlength="20" required>
+          </p>
+  
+          <p>
+            <label>Nom :</label>
+            <input type="text" class="id_form" name="last_name" id="last_name" pattern="^[A-Za-z]+$" maxlength="20" required>
+          </p>
+  
+         
+            <canvas id="canvas_form"></canvas>
+          
+
+          <div id="form_btn">
+
+            <button type="submit" id="form_submit" name="envoyer">Reserver</button>
+
+            <button id="reservation" name="reservation">Valider</button>
+
+            
+          </div>
+
+        </form>
+        
+
+      </div>
+    </div>
+
+  </section>
+
+  <section id="reservation_section">
+    <div id="reservation_ok">
+      <p id="reservation_paragraphe">
+
+        <!-- Le texte JS :
+
+          Une réservation est déjà en cour pour {prenom} {nom} pour encore {20minutes}
+          
+        -->
+      </p>
+      <button id="reset_reservation">Annuler</button>
+    </div>
+  </section>
+
+  <!-- Map end-->
+
+
+  <!-- Footer -->
+  <footer class="page-footer font-small blue">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">Projet étudiant OpenClassRooms
+    </div>
+    <!-- Copyright -->
+
+    <!-- A supprimer : C'est pour cacher le slider pendant que je travail sur la map -->
+<!--     <button type="submit" id="pourCacher" onclick="fermeToi()"></button>
+ -->
+  </footer>
+  <!-- Footer end -->
+
+  <!--Scripts JS-->
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+
+  <script src="js/slider.js"></script> <!-- Si je le met en haut, il ne fonctionnera pas (error dans la console) -->
+
+  <script src="js/canvas.js"></script>
+  <script src="js/reservation.js"></script>
+  <script src="js/form.js"></script>
+  <script src="js/initMap.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>
